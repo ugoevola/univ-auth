@@ -1,0 +1,9 @@
+.idea
+node_modules/
+.tmp/
+dist
+dist/www/
+dist/platforms/
+dist/node_modules/
+npm-debug.log
+/_linux 
