@@ -18,7 +18,7 @@ import { Config } from './config/config';
     host: Config.get().MONGO_URL,
     port: Config.get().MONGO_PORT,
     database : 'univ-auth',
-    entities: ['src/**/*.entity.ts'],
+    entities: [Config.get().ENTITIES_DIR || './dist/repository/**/*.entity.js'],
     synchronize: true,
   })],
   controllers: [AuthenticationController],

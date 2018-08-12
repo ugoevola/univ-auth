@@ -19,7 +19,8 @@ export class Config {
     AUTH_JWT_KEY: string,
     SWAGGER_ACTIVATED: boolean,
     ADMIN_ACCOUNT: string,
-    ADMIN_PWD: string
+    ADMIN_PWD: string,
+    ENTITIES_DIR: string,
   };
 
   private constructor() {
@@ -46,13 +47,15 @@ export class Config {
     const nodeEnv = process.env.NODE_ENV;
 
     if (nodeEnv) {
-      WinLogger.get('config').info(`Chargement de la configuration de ${nodeEnv}`);
+      WinLogger.get('config').info(`Loading ${nodeEnv} configuration`);
       try {
         const override = this.getConfig(server_config_folder, `${nodeEnv}.js`).config;
         json_override(this.config, override);
       } catch (error) {
         WinLogger.get('config').warn(`No configuration found for ${nodeEnv}`);
       }
+    } else {
+      WinLogger.get('config').info(`No configuration specified: using default`);
     }
   }
 
