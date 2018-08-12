@@ -1,8 +1,8 @@
 import { Role } from './role.enum';
-import { EsEntity, EsField } from 'es-mapping-ts';
-import { EsModel, IEsModel } from './base.schema';
+import { Entity, ObjectIdColumn, PrimaryColumn, ObjectID, Column } from 'typeorm';
+import { IMongoModel } from './mongo-base.schema';
 
-export interface IAccount extends IEsModel {
+export interface IAccount extends IMongoModel {
   email: string;
   password: string;
   role: Role;
@@ -12,48 +12,31 @@ export interface IAccount extends IEsModel {
   lastLoginSuccessful: Date;
 }
 
-@EsEntity({
-  index: 'accounts',
-  type: 'account'
-})
-export class Account extends EsModel implements IAccount {
+@Entity()
+export class AccountEntity implements IAccount {
 
-  @EsField({
-    type: 'keyword'
-  })
+  @ObjectIdColumn()
+  _id?: ObjectID;
+
+  @PrimaryColumn()
   email: string;
 
-  @EsField({
-    type: 'text',
-    analyzer: 'whitespace'
-  })
+  @Column()
   password: string;
 
-  @EsField({
-    type: 'keyword'
-  })
+  @Column()
   role: Role;
 
-  @EsField({
-    type: 'text',
-    analyzer: 'whitespace'
-  })
+  @Column()
   name: string;
 
-  @EsField({
-    type: 'text',
-    analyzer: 'whitespace'
-  })
+  @Column()
   givenName: string;
 
-  @EsField({
-    type: 'date'
-  })
+  @Column()
   lastLoginAttempt: Date;
 
-  @EsField({
-    type: 'date'
-  })
+  @Column()
   lastLoginSuccessful: Date;
 }
 

@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
 
-import { AccountRepository } from './repositories/account.repository';
+import { AccountMongoRepository } from './repositories/account.repository';
+import { AccountEntity } from './schema/account.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 const repositories  = [
-  AccountRepository,
+  AccountMongoRepository,
 ];
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forFeature([AccountEntity])],
   providers: [...repositories],
   exports : [...repositories]
 })

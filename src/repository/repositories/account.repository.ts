@@ -1,19 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { Account } from '../schema/account.entity';
-import { RepositoryBase } from './es-base.repository';
+import { Repository } from 'typeorm';
+import { AccountEntity } from '../schema/account.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-export class AccountRepository extends RepositoryBase<Account> {
+export class AccountMongoRepository {
 
-  getDocumentId(document: Account) {
-    return document._id;
+  constructor(@InjectRepository(AccountEntity)
+  private readonly pageRepository: Repository<AccountEntity>) {
   }
 
-  getType(): string {
-    return 'account';
-  }
-
-  newObject(): Account {
-    return new Account();
+  public getBaseRepository() {
+    return this.pageRepository;
   }
 }
+

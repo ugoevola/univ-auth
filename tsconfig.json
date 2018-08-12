@@ -16,7 +16,14 @@
     "sourceMap": false,
     "allowJs": true,
     "outDir": "./dist",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "@dto/*": ["./dto/*"],
+      "@common/*": ["./common/*"],
+      "@services/*": ["./services/*"],
+      "@repository/*": ["./repository/*"],
+      "@config/*": ["./config/*"]
+    }
   },
   "include": [
     "src/**/*"

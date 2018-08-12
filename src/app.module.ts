@@ -8,10 +8,19 @@ import { JwtStrategy } from './security/jwt.strategy';
 import { AuthMiddleware } from './security/auth.middleware';
 import { AuthService } from './security/auth.service';
 import { AuthGuard } from './security/guards/auth.guards';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { RepositoryModule } from './repository/repository.module';
+import { Config } from './config/config';
 
 @Module({
-  imports: [RepositoryModule],
+  imports: [RepositoryModule, TypeOrmModule.forRoot({
+    type: 'mongodb',
+    host: Config.get().MONGO_URL,
+    port: Config.get().MONGO_PORT,
+    database : 'univ-auth',
+    entities: ['src/**/*.entity.ts'],
+    synchronize: true,
+  })],
   controllers: [AuthenticationController],
   providers: [AuthenticationService, AuthService,
     JwtStrategy,

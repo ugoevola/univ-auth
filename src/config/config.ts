@@ -11,6 +11,7 @@ export class Config {
 
   private config: {
     MONGO_URL: string,
+    MONGO_PORT: number,
     SERVER_PORT: string,
     SERVER_PATH: string,
     LOG_LEVEL: string,

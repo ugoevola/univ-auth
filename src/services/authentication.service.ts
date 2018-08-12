@@ -2,17 +2,20 @@ import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
 import { WinLogger } from '../common/logger/winlogger';
 import { Config } from '../config/config';
-import { Account } from '../repository/schema/account.entity';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { AccountRepository } from '../repository/repositories/account.repository';
+import { AccountMongoRepository } from '../repository/repositories/account.repository';
 import { FunctionalException } from '../common/exception/functional.exception';
+import { AccountEntity } from '../repository/schema/account.entity';
+import { BaseService } from './base.service';
 
 @Injectable()
-export class AuthenticationService {
+export class AuthenticationService extends BaseService<AccountEntity> {
 
   private logger: WinLogger = WinLogger.get('authentification-service');
 
-  constructor(private readonly accountRepository: AccountRepository) { }
+  constructor(private readonly accountRepository: AccountMongoRepository) {
+    super(accountRepository.getBaseRepository());
+  }
 
   public async authenticate(email: string, password: string): Promise<string> {
 
@@ -26,7 +29,7 @@ export class AuthenticationService {
         password: bcrypt.hashSync(Config.get().ADMIN_PWD, 10)
       };
     } else {
-      account = await this.accountRepository.findOneFiltered({ email: email });
+      account = await this.accountRepository.getBaseRepository().findOne({ email: email });
     }
 
     let jwtToken: string;
@@ -45,20 +48,20 @@ export class AuthenticationService {
         account.lastLoginSuccessful = loginDate;
       }
       if (account.email !== Config.get().ADMIN_ACCOUNT) {
-        await this.accountRepository.update(account);
+        await this.accountRepository.getBaseRepository().save(account);
       }
     }
     return jwtToken;
   }
 
-  public async create(account: Account): Promise<Account> {
-    const existingAccount = await this.accountRepository.findOneFiltered({ 'email': account.email });
+  public async create(account: AccountEntity): Promise<Account> {
+    const existingAccount = await this.accountRepository.getBaseRepository().findOne({ 'email': account.email });
     if (existingAccount) {
       throw new FunctionalException('already_exist', `A user with the same email already exist :  ${account.email}`);
     }
 
     account.password = bcrypt.hashSync(account.password, 10);
-    return await this.accountRepository.create(account);
+    return await this.create(account);
   }
 
   public async userInfo(token: string): Promise<Account> {

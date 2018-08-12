@@ -1,5 +1,6 @@
 const config = {
-  MONGO_URL: process.env.MONGO_URL || "localhost:9200",
+  MONGO_URL: process.env.MONGO_URL || "localhost",
+  MONGO_PORT: process.env.MONGO_PORT || "27017",
   SERVER_PORT: process.env.SERVER_PORT || "3000",
   SERVER_PATH: process.env.SERVER_PATH || "/auth",
   LOG_LEVEL: process.env.LOG_LEVEL || "info",

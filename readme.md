@@ -1,5 +1,7 @@
 ## Univ Auth
 
+[![GitHub version](https://badge.fury.io/gh/xrobert35%2Funiv-auth.svg)](https://badge.fury.io/gh/xrobert35%2Funiv-auth)
+
 ## General informations
 
 This project is a simple authentitacion server

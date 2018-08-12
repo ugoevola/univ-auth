@@ -1,4 +1,4 @@
-FROM node:8.6.0-alpine
+FROM node:10.8.0-alpine
 
 RUN mkdir -p /app
 RUN mkdir -p /app/dist
