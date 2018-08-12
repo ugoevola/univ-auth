@@ -9,8 +9,8 @@ services:
     ports:
       - "3000:3000"
 
-  univ_auth_mongo:
+  univ_mongo:
     image: mongo:3.4
-    container_name: univ_auth_mongo
+    container_name: univ_mongo
     ports:
       - "27017:27017"
