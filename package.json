@@ -4,11 +4,11 @@
   "description": "Auth Server",
   "license": "MIT",
   "scripts": {
-    "webpack": "webpack --config webpack.config.js",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:prod": "node dist/main.js",
     "lint": "tslint --project tsconfig.json --fix",
     "build": "./node_modules/.bin/tsc -p tsconfig.json",
+    "test" : "node_modules/.bin/jest --colors --config=./jest-global.config.js --runInBand --coverage",
     "test:unit": "node_modules/.bin/jest --colors --config=./jest.config.js --runInBand --coverage",
     "test:e2e": "node_modules/.bin/jest --colors --config=./jest-e2e.config.js --runInBand --coverage"
   },

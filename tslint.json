@@ -115,5 +115,8 @@
       "check-separator",
       "check-type"
     ]
+  },
+  "jsRules": {
+    "no-empty": true
   }
 }
