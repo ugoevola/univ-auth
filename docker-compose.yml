@@ -6,6 +6,8 @@ services:
     container_name: univ_auth
     environment:
       - NODE_ENV=docker
+      - ADMIN_ACCOUNT=admin@auth.fr
+      - ADMIN_PWD=admin
     ports:
       - "3000:3000"
 

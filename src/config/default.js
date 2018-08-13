@@ -8,6 +8,6 @@ const config = {
   AUTH_JWT_KEY: process.env.AUTH_JWT_KEY || "I015U2VjcmV0SldUNCFJbmV4eXM=",
   SWAGGER_ACTIVATED: process.env.SWAGGER_ACTIVATED || true,
   ADMIN_ACCOUNT: process.env.ADMIN_ACCOUNT || 'admin@univ-auth.fr',
-  ADMIN_PWD : 'univ-auth-s3cr3t'
+  ADMIN_PWD : process.env.ADMIN_PWD || 'univ-auth-s3cr3t'
 };
 module.exports = { config: config }
