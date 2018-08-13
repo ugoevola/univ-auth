@@ -5,48 +5,6 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Launch test unitaire",
-        "type": "node",
-        "request": "launch",
-        "env": {
-          "NODE_ENV": "test"
-        },
-        "runtimeArgs": [
-          "--nolazy"
-        ],
-        "args": [
-          "--colors",
-          "--config=./jest.config.js",
-          "--runInBand"
-        ],
-        "windows": {
-          "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-        },
-        "outputCapture": "std",
-        "internalConsoleOptions": "openOnSessionStart"
-      },
-      {
-        "name": "Launch e2e test",
-        "type": "node",
-        "request": "launch",
-        "env": {
-          "NODE_ENV": "test"
-        },
-        "args": [
-          "--colors",
-          "--config=./jest-e2e.js",
-          "--runInBand"
-        ],
-        "runtimeArgs": [
-          "--nolazy"
-        ],
-        "windows": {
-          "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-        },
-        "outputCapture": "std",
-        "internalConsoleOptions": "openOnSessionStart"
-      },
-      {
         "name": "Launch server",
         "type": "node",
         "request": "launch",
@@ -65,6 +23,69 @@
         "env": {
           "NODE_ENV": "development",
         }
+      },
+      {
+        "name": "Launch all test",
+        "type": "node",
+        "request": "launch",
+        "env": {
+          "NODE_ENV": "test"
+        },
+        "runtimeArgs": [
+          "--nolazy"
+        ],
+        "args": [
+          "--colors",
+          "--config=${workspaceFolder}/jest-global.config.js",
+          "--runInBand"
+        ],
+        "windows": {
+          "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+        },
+        "outputCapture": "std",
+        "internalConsoleOptions": "openOnSessionStart"
+      },
+      {
+        "name": "Launch test unitaire",
+        "type": "node",
+        "request": "launch",
+        "env": {
+          "NODE_ENV": "test"
+        },
+        "runtimeArgs": [
+          "--nolazy"
+        ],
+        "args": [
+          "--colors",
+          "--config=${workspaceFolder}/jest.config.js",
+          "--runInBand"
+        ],
+        "windows": {
+          "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+        },
+        "outputCapture": "std",
+        "internalConsoleOptions": "openOnSessionStart"
+      },
+      {
+        "name": "Launch e2e test",
+        "type": "node",
+        "request": "launch",
+        "env": {
+          "NODE_ENV": "test"
+        },
+        "args": [
+          "--colors",
+          "--config=${workspaceFolder}/jest-e2e.config.js",
+          "--runInBand"
+        ],
+        "runtimeArgs": [
+          "--nolazy"
+        ],
+        "windows": {
+          "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+        },
+        "outputCapture": "std",
+        "internalConsoleOptions": "openOnSessionStart"
       }
     ]
   }

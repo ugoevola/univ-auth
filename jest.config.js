@@ -4,9 +4,10 @@ const moduleNameMapper = require("tsconfig-paths-jest")(tsconfig)
 module.exports = {
   moduleFileExtensions: ["js", "json", "ts"],
   rootDir: "./src",
-  testRegex: "src\/app.*spec.ts$",
+  testRegex: "src\/.*spec.ts$",
   transform: {
     "^.+\\.(t|j)s$": "ts-jest"
   },
   moduleNameMapper,
+  coverageDirectory: "../coverage"
 }
