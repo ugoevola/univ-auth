@@ -21,16 +21,16 @@ export class AccountEntity implements IMongoModel {
   name: string;
 
   @Column()
-  lastLoginAttempt: Date;
+  lastLoginAttempt?: Date;
 
   @Column()
-  lastLoginSuccessful: Date;
+  lastLoginSuccessful?: Date;
 
   @Column()
-  createdOn: Date;
+  createdOn?: Date;
 
   @Column()
-  updatedOn: Date;
+  updatedOn?: Date;
 }
 
 
