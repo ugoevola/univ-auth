@@ -34,20 +34,20 @@ export class AccountDto  {
   @IsString()
   @Type(() => Date)
   @ApiModelProperty()
-  lastLoginAttempt: Date;
+  lastLoginAttempt?: Date;
 
   @IsDate()
   @Type(() => Date)
   @ApiModelProperty()
-  lastLoginSuccessful: Date;
+  lastLoginSuccessful?: Date;
 
   @ApiModelProperty()
   @Type(() => Date)
   @IsDate()
-  createdOn: Date;
+  createdOn?: Date;
 
   @ApiModelProperty()
   @Type(() => Date)
   @IsDate()
-  updatedOn: Date;
+  updatedOn?: Date;
 }

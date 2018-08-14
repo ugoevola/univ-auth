@@ -2,13 +2,11 @@ import request from 'supertest';
 import { HttpStatus } from '@nestjs/common';
 import { TestServer } from '../test-server';
 
-import * as adminAccount from '../resources/account/admin.json';
+import { default as adminAccount } from '../resources/account/admin';
 import { Config } from '../../src/config/config';
-import { AccountDto } from '../../src/dto/account.dto';
 
 describe('(e2e) AuthController ', () => {
 
-  const _adminAccount = (<any>adminAccount);
   let _token = null;
 
   beforeAll(async () => {
@@ -36,13 +34,13 @@ describe('(e2e) AuthController ', () => {
   it('/POST /auth/account', async () => {
     const res = await request(TestServer.getHttpServer())
       .post('/auth/account')
-      .set('authorization', _token).send(_adminAccount.default);
+      .set('authorization', _token).send(adminAccount);
 
     expect(res.status).toEqual(HttpStatus.CREATED);
     expect(res.body._id).toBeDefined();
-    expect(res.body.name).toEqual(_adminAccount.name);
-    expect(res.body.email).toEqual(_adminAccount.email);
-    expect(res.body.role).toEqual(_adminAccount.role);
+    expect(res.body.name).toEqual(adminAccount.name);
+    expect(res.body.email).toEqual(adminAccount.email);
+    expect(res.body.role).toEqual(adminAccount.role);
     expect(res.body.password).not.toBeDefined();
     expect(res.body.createdOn).toBeDefined();
   });
