@@ -12,7 +12,12 @@ export class ValidationPipe implements PipeTransform<any> {
       return value;
     }
     const object = plainToClass(metatype, value);
-      const errors = await validate(object, { skipMissingProperties: true });
+      const errors = await validate(object, {
+        skipMissingProperties: true,
+        forbidUnknownValues: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      });
     if (errors.length > 0) {
       // TODO revoir le formatage des erreurs
       throw new BadRequestException('Validation failed', JSON.stringify(errors));

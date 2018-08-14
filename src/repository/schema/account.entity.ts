@@ -2,18 +2,8 @@ import { Role } from './role.enum';
 import { Entity, ObjectIdColumn, PrimaryColumn, ObjectID, Column } from 'typeorm';
 import { IMongoModel } from './mongo-base.schema';
 
-export interface IAccount extends IMongoModel {
-  email: string;
-  password: string;
-  role: Role;
-  name: string;
-  givenName: string;
-  lastLoginAttempt: Date;
-  lastLoginSuccessful: Date;
-}
-
 @Entity()
-export class AccountEntity implements IAccount {
+export class AccountEntity implements IMongoModel {
 
   @ObjectIdColumn()
   _id?: ObjectID;
@@ -31,13 +21,16 @@ export class AccountEntity implements IAccount {
   name: string;
 
   @Column()
-  givenName: string;
-
-  @Column()
   lastLoginAttempt: Date;
 
   @Column()
   lastLoginSuccessful: Date;
+
+  @Column()
+  createdOn: Date;
+
+  @Column()
+  updatedOn: Date;
 }
 
 

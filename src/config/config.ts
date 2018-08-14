@@ -19,8 +19,7 @@ export class Config {
     AUTH_JWT_KEY: string,
     SWAGGER_ACTIVATED: boolean,
     ADMIN_ACCOUNT: string,
-    ADMIN_PWD: string,
-    ENTITIES_DIR: string,
+    ADMIN_PWD: string
   };
 
   private constructor() {

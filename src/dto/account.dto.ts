@@ -1,16 +1,15 @@
-import { IAccount } from '../repository/schema/account.entity';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Role } from '../repository/schema/role.enum';
 import { IsString, IsDefined, IsEmail, IsDate, IsEnum } from 'class-validator';
 import { Type, Transform } from 'class-transformer';
 import { ObjectID } from 'mongodb';
 
-export class AccountDto implements IAccount {
+export class AccountDto  {
 
   @IsString()
   @ApiModelProperty()
   @Transform((id: string) =>  new ObjectID(id), {toClassOnly : true})
-  _id: ObjectID;
+  _id?: ObjectID;
 
   @IsEmail()
   @IsDefined()
@@ -31,11 +30,6 @@ export class AccountDto implements IAccount {
   @IsDefined()
   @ApiModelProperty()
   name: string;
-
-  @IsString()
-  @IsDefined()
-  @ApiModelProperty()
-  givenName: string;
 
   @IsString()
   @Type(() => Date)

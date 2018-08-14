@@ -54,19 +54,20 @@ export class AuthenticationService extends BaseService<AccountEntity> {
     return jwtToken;
   }
 
-  public async create(account: AccountEntity): Promise<Account> {
+  public async create(account: AccountEntity): Promise<AccountEntity> {
     const existingAccount = await this.accountRepository.getBaseRepository().findOne({ 'email': account.email });
     if (existingAccount) {
       throw new FunctionalException('already_exist', `A user with the same email already exist :  ${account.email}`);
     }
 
     account.password = bcrypt.hashSync(account.password, 10);
-    return await this.create(account);
+    account.createdOn = new Date();
+    return await super.create(account);
   }
 
-  public async userInfo(token: string): Promise<Account> {
-    let userAccount: Account;
-    jwt.decode(Config.get().AUTH_JWT_KEY, token, (err, account: Account) => {
+  public async userInfo(token: string): Promise<AccountEntity> {
+    let userAccount: AccountEntity;
+    jwt.decode(Config.get().AUTH_JWT_KEY, token, (err, account: AccountEntity) => {
       if (err) {
         throw new InternalServerErrorException(err);
       }
