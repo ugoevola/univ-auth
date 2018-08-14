@@ -7,4 +7,3 @@ before_install:
   - npm i
 install:
   - npm run build
-after_success: npm run test
