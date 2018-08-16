@@ -9,5 +9,5 @@ module.exports = {
     "^.+\\.(t|j)s$": "typescript-babel-jest"
   },
   moduleNameMapper,
-  coverageDirectory: "./coverage"
+  coverageDirectory: "../coverage"
 }
