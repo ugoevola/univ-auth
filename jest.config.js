@@ -6,8 +6,8 @@ module.exports = {
   rootDir: "./src",
   testRegex: "src\/.*spec.ts$",
   transform: {
-    "^.+\\.(t|j)s$": "ts-jest"
+    "^.+\\.(t|j)s$": "typescript-babel-jest"
   },
   moduleNameMapper,
-  coverageDirectory: "../coverage"
+  coverageDirectory: "./coverage"
 }

@@ -2,6 +2,7 @@
 
 [![GitHub version](https://badge.fury.io/gh/xrobert35%2Funiv-auth.svg)](https://github.com/xrobert35/univ-auth)
 [![Coverage Status](https://coveralls.io/repos/github/xrobert35/univ-auth/badge.svg)](https://coveralls.io/github/xrobert35/univ-auth)
+[![Build Status](https://travis-ci.org/xrobert35/univ-auth.svg?branch=develop)](https://travis-ci.org/xrobert35/univ-auth)
 [![GitHub version](https://img.shields.io/badge/licence-MIT-green.svg)](https://github.com/xrobert35/univ-auth)
 
 ## General informations

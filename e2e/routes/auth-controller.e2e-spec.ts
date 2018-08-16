@@ -1,4 +1,4 @@
-import request from 'supertest';
+import * as request from 'supertest';
 import { HttpStatus } from '@nestjs/common';
 import { TestServer } from '../test-server';
 import * as lodash from 'lodash';

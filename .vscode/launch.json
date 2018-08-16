@@ -36,6 +36,7 @@
         ],
         "args": [
           "--colors",
+          "--no-cache",
           "--config=${workspaceFolder}/jest-global.config.js",
           "--runInBand"
         ],
@@ -57,6 +58,7 @@
         ],
         "args": [
           "--colors",
+          "--no-cache",
           "--config=${workspaceFolder}/jest.config.js",
           "--runInBand"
         ],
@@ -75,6 +77,7 @@
         },
         "args": [
           "--colors",
+          "--no-cache",
           "--config=${workspaceFolder}/jest-e2e.config.js",
           "--runInBand"
         ],
