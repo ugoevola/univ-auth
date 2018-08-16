@@ -23,6 +23,7 @@ You will need a mongodb to make it work, you can
 | start  |  Launch the project |
 | start:prod | Launch the builded project in prod mode   |
 | build  | Build the project  |
+| test | Launch all jest test |
 | test:unit |  Launch jest unit test |
 | test:e2e |  Launch jest e2e test |
 

@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
 import { WinLogger } from '../common/logger/winlogger';
 import { Config } from '../config/config';
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, HttpStatus } from '@nestjs/common';
 import { AccountMongoRepository } from '../repository/repositories/account.repository';
 import { FunctionalException } from '../common/exception/functional.exception';
 import { AccountEntity } from '../repository/schema/account.entity';
@@ -57,7 +57,8 @@ export class AuthenticationService extends BaseService<AccountEntity> {
   public async create(account: AccountEntity): Promise<AccountEntity> {
     const existingAccount = await this.accountRepository.getBaseRepository().findOne({ 'email': account.email });
     if (existingAccount) {
-      throw new FunctionalException('already_exist', `A user with the same email already exist :  ${account.email}`);
+      throw new FunctionalException('already_exist',
+        `An account with the same email already exist :  ${account.email}`, HttpStatus.CONFLICT);
     }
 
     account.password = bcrypt.hashSync(account.password, 10);
