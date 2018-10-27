@@ -15,7 +15,7 @@ COPY . .
 
 RUN npm run build
 
-ENV NODE_ENV=docker-dev
+ENV NODE_ENV=production
 
 CMD ls -l && npm run start:prod
 
